@@ -6,66 +6,101 @@
 <title>Greece: 15-Surface Policy Analysis 2019–2025</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sora:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#08111e;--bg2:#0d1929;--bg3:#111f33;--bd:#1a2d45;
-  --txt:#dde4f0;--muted:#5a7a9a;--acc:#3b82f6;
-  --ff:'Sora',sans-serif;--mono:'IBM Plex Mono',monospace;
+  --bg:#f8fafc;--bg2:#ffffff;--bg3:#f1f5f9;--bd:#e2e8f0;
+  --txt:#0f172a;--muted:#64748b;--acc:#1d4ed8;--acc-light:#eff6ff;
+  --green:#16a34a;--amber:#d97706;--red:#dc2626;
+  --ff:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:var(--ff);line-height:1.6;font-size:14px}
+body{background:var(--bg);color:var(--txt);font-family:var(--ff);line-height:1.6;font-size:15px}
 
-.hdr{background:linear-gradient(160deg,#061624 0%,#0d2540 45%,#061624 100%);
-     padding:3.5rem 2rem 2.5rem;text-align:center;border-bottom:1px solid var(--bd);
-     position:relative;overflow:hidden}
-.hdr::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 50% -20%,rgba(59,130,246,.18) 0%,transparent 65%);
-  pointer-events:none}
-.hdr-flag{font-size:2.8rem;margin-bottom:.4rem}
-.hdr h1{font-size:2.2rem;font-weight:700;letter-spacing:-.02em;color:#fff;margin-bottom:.35rem}
-.hdr-sub{font-size:.88rem;color:#7a9cbf;max-width:640px;margin:0 auto .6rem}
-.hdr-meta{font-family:var(--mono);font-size:.72rem;color:#3a5a7a}
-.rl{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-top:1rem}
-.rli{display:flex;align-items:center;gap:.3rem;font-size:.7rem;font-family:var(--mono);color:#5a7a9a}
+/* HEADER */
+.hdr{
+  background:linear-gradient(160deg,#1e3a5f 0%,#1d4ed8 50%,#1e40af 100%);
+  padding:3rem 1.5rem 2.5rem;text-align:center;
+  border-bottom:1px solid #1e3a5f;
+}
+.hdr-flag{font-size:2.6rem;margin-bottom:.4rem}
+.hdr h1{font-size:2rem;font-weight:700;letter-spacing:-.02em;color:#fff;margin-bottom:.3rem}
+.hdr-sub{font-size:.88rem;color:rgba(255,255,255,.8);max-width:620px;margin:0 auto .6rem}
+.hdr-meta{font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.5)}
+.rl{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-top:.9rem}
+.rli{display:flex;align-items:center;gap:.3rem;font-size:.7rem;font-family:var(--mono);
+     color:rgba(255,255,255,.65)}
 .rld{width:9px;height:9px;border-radius:2px}
 
-.nav{background:var(--bg2);border-bottom:1px solid var(--bd);padding:.5rem 1.2rem;
-     display:flex;flex-wrap:wrap;gap:.25rem;position:sticky;top:0;z-index:100;
-     box-shadow:0 4px 24px rgba(0,0,0,.5)}
-.np{display:inline-flex;align-items:center;gap:.3rem;padding:.22rem .55rem;border-radius:6px;
-    font-size:.72rem;font-weight:600;color:var(--muted);background:transparent;
-    text-decoration:none;border:1px solid transparent;transition:.15s;font-family:var(--mono)}
+/* NAV */
+.nav{
+  background:#fff;border-bottom:1px solid var(--bd);
+  padding:.5rem 1.2rem;display:flex;flex-wrap:wrap;gap:.25rem;
+  position:sticky;top:0;z-index:100;box-shadow:var(--shadow);
+}
+.np{
+  display:inline-flex;align-items:center;gap:.28rem;
+  padding:.22rem .55rem;border-radius:6px;
+  font-size:.72rem;font-weight:500;color:var(--muted);
+  background:transparent;text-decoration:none;
+  border:1px solid transparent;transition:.15s;font-family:var(--mono);
+}
 .np span{font-family:var(--ff);font-weight:400;font-size:.7rem}
-.np:hover{color:var(--acc);border-color:var(--acc);background:rgba(59,130,246,.08)}
+.np:hover{color:var(--acc);border-color:#bfdbfe;background:var(--acc-light)}
 
+/* MAIN */
 main{max-width:1360px;margin:0 auto;padding:2rem 1.5rem 6rem}
 
-section{margin-bottom:3.5rem;scroll-margin-top:56px}
-.sh{display:flex;align-items:center;gap:.7rem;padding-bottom:.65rem;margin-bottom:1rem;
-    border-bottom:2px solid var(--bd);position:relative}
-.sh::after{content:'';position:absolute;bottom:-2px;left:0;width:48px;height:2px;background:var(--acc)}
-.snum{font-family:var(--mono);font-size:1.5rem;font-weight:600;color:rgba(59,130,246,.2);min-width:2.2rem}
-.semoji{font-size:1.15rem}
-h2{font-size:1.18rem;font-weight:700;color:#e8f0ff}
+/* SECTION */
+section{margin-bottom:3.5rem;scroll-margin-top:60px}
+.sh{
+  display:flex;align-items:center;gap:.7rem;
+  padding-bottom:.65rem;margin-bottom:1rem;
+  border-bottom:2px solid var(--bd);position:relative;
+}
+.sh::after{content:'';position:absolute;bottom:-2px;left:0;
+           width:48px;height:2px;background:var(--acc)}
+.snum{font-family:var(--mono);font-size:1.4rem;font-weight:500;
+      color:#cbd5e1;min-width:2.2rem}
+.semoji{font-size:1.1rem}
+h2{font-size:1.15rem;font-weight:700;color:var(--txt)}
 
-.narr{font-size:.83rem;color:#7a9cbf;margin-bottom:1.2rem;max-width:1000px;line-height:1.85;
-      padding:.7rem 1rem;background:var(--bg2);border-radius:8px;border-left:3px solid var(--acc)}
-.vbadge{display:inline-block;padding:1px 8px;border-radius:4px;font-size:.68rem;
-        font-weight:700;font-family:var(--mono);text-transform:uppercase;
-        letter-spacing:.05em;margin-right:.4rem}
+/* NARR */
+.narr{
+  font-size:.84rem;color:#334155;margin-bottom:1.2rem;
+  max-width:1000px;line-height:1.85;
+  padding:.7rem 1rem;background:#f0f7ff;
+  border-radius:8px;border-left:3px solid var(--acc);
+}
+.vbadge{
+  display:inline-block;padding:2px 8px;border-radius:4px;
+  font-size:.68rem;font-weight:700;font-family:var(--mono);
+  text-transform:uppercase;letter-spacing:.05em;margin-right:.4rem;
+}
 
+/* CHART GRID */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
-.card{background:var(--bg2);border:1px solid var(--bd);border-radius:9px;padding:.9rem}
+.card{
+  background:#fff;border:1px solid var(--bd);border-radius:10px;
+  padding:1rem;box-shadow:var(--shadow);
+}
 .card.wide{grid-column:span 2}
-.ct{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
-    color:var(--muted);margin-bottom:.55rem;font-family:var(--mono)}
+.ct{
+  font-size:.68rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--muted);margin-bottom:.55rem;
+  font-family:var(--mono);
+}
 .cw{position:relative;height:230px}
-.note{font-size:.67rem;color:var(--muted);margin-top:.35rem;font-style:italic}
+.note{font-size:.67rem;color:var(--muted);margin-top:.4rem;font-style:italic}
 
-/* Assessment */
+/* ASSESSMENT */
 .assess-wrap{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
-.assess-card{background:var(--bg2);border:1px solid var(--bd);border-radius:9px;padding:1.1rem}
+.assess-card{
+  background:#fff;border:1px solid var(--bd);border-radius:10px;
+  padding:1.1rem;box-shadow:var(--shadow);
+}
 .assess-card.full{grid-column:span 2}
 .assess-card.half{grid-column:span 1}
 
@@ -74,39 +109,61 @@ h2{font-size:1.18rem;font-weight:700;color:#e8f0ff}
 .ss-n{font-size:2rem;font-weight:700;font-family:var(--mono)}
 .ss-l{font-size:.78rem;color:var(--muted)}
 
-.sc-table{width:100%;border-collapse:collapse;font-size:.79rem}
-.sc-table th{text-align:left;padding:.35rem .55rem;color:var(--muted);font-family:var(--mono);
-             font-size:.66rem;letter-spacing:.05em;border-bottom:1px solid var(--bd)}
-.sc-table td{padding:.4rem .55rem;border-bottom:1px solid rgba(26,45,69,.6)}
+.sc-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.sc-table th{
+  text-align:left;padding:.35rem .55rem;color:var(--muted);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;
+  border-bottom:1px solid var(--bd);background:var(--bg3);
+}
+.sc-table td{padding:.42rem .55rem;border-bottom:1px solid var(--bd)}
 .sc-table tr:last-child td{border-bottom:none}
+.sc-table tr:hover td{background:var(--bg3)}
 
 .checks{display:flex;flex-direction:column;gap:.5rem}
-.chk{display:flex;gap:.65rem;align-items:flex-start;padding:.55rem .75rem;
-     border-radius:6px;font-size:.78rem}
-.chk.warn{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15)}
-.chk.bad{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15)}
+.chk{
+  display:flex;gap:.65rem;align-items:flex-start;
+  padding:.55rem .75rem;border-radius:6px;font-size:.78rem;
+}
+.chk.warn{background:#fffbeb;border:1px solid #fde68a}
+.chk.bad{background:#fff1f2;border:1px solid #fecdd3}
 .chk span{flex-shrink:0;margin-top:1px}
-.chk strong{color:#e8f0ff}
-.chk div{color:#7a9cbf;line-height:1.55}
+.chk strong{color:var(--txt)}
+.chk div{color:#475569;line-height:1.55}
 
 .regime-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem}
-.rbox{border:1px solid;border-radius:7px;padding:.75rem;background:rgba(255,255,255,.02)}
-.rbl{font-family:var(--mono);font-size:.65rem;font-weight:600;letter-spacing:.06em;
-     color:var(--muted);margin-bottom:.35rem}
-.rbox p{font-size:.77rem;color:#7a9cbf;line-height:1.6}
+.rbox{border:1px solid;border-radius:7px;padding:.75rem;background:var(--bg3)}
+.rbl{
+  font-family:var(--mono);font-size:.65rem;font-weight:600;
+  letter-spacing:.06em;color:var(--muted);margin-bottom:.35rem;
+}
+.rbox p{font-size:.77rem;color:#475569;line-height:1.6}
 
-.final-p{font-size:.84rem;color:#7a9cbf;line-height:1.85;margin-bottom:.75rem}
-.final-p strong{color:#e8f0ff}
+.final-p{font-size:.85rem;color:#334155;line-height:1.85;margin-bottom:.75rem}
+.final-p strong{color:var(--txt)}
 
-footer{text-align:center;padding:2rem;font-size:.72rem;color:var(--muted);
-       border-top:1px solid var(--bd);font-family:var(--mono)}
+/* FOOTER */
+footer{
+  text-align:center;padding:2rem;font-size:.72rem;color:var(--muted);
+  border-top:1px solid var(--bd);background:#fff;font-family:var(--mono);
+}
 
-@media(max-width:800px){
+/* MOBILE */
+@media(max-width:768px){
   .grid,.assess-wrap{grid-template-columns:1fr}
   .card.wide,.assess-card.full,.assess-card.half{grid-column:span 1}
   .regime-grid{grid-template-columns:1fr}
   .hdr h1{font-size:1.5rem}
+  .hdr{padding:2rem 1rem 1.8rem}
+  main{padding:1.2rem 1rem 4rem}
   .nav{padding:.4rem .8rem}
+  .np span{display:none}
+  .cw{height:200px}
+  .sc-table{font-size:.72rem}
+}
+@media(max-width:480px){
+  .hdr h1{font-size:1.25rem}
+  .grid{gap:.6rem}
+  .card{padding:.75rem}
 }
 </style>
 </head>
@@ -173,14 +230,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"GDP \u20acM const.2010",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"GFCF \u20acM const.2010",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -216,11 +273,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Index 2010=100",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -256,11 +313,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"\u20acM const.2010",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -312,11 +369,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -352,11 +409,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -392,11 +449,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"EUR/month",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -448,14 +505,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Gini",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -491,11 +548,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -531,14 +588,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"% YoY",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Balance stat.",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -591,11 +648,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"% of GDP",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -631,11 +688,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"% of GDP",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -671,11 +728,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"% of GDP",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -728,11 +785,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"\u20acM",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -768,14 +825,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"\u20acM",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"% GDP",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -811,11 +868,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"\u20acM const.2010",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -869,11 +926,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"% of GDP",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -909,11 +966,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"% of GDP",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -949,11 +1006,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"% of GDP",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1005,14 +1062,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Rate / Ratio",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"000 persons",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1048,11 +1105,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Thousands",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1079,7 +1136,7 @@ const _rp={id:'regimeBands',beforeDraw(chart){
 }};
         const cfg={
         type:"line",
-        data:{labels:["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],datasets:[{"label": "Emigration 25-39 yrs", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "borderColor": "#f97316", "backgroundColor": "#f9731622", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Life expectancy at birth (right)", "data": [80.6, 80.8, 80.7, 81.4, 81.5, 81.1, 81.5, 81.4, 81.9, 81.7, 81.4, 80.2, 80.8, 81.8, 81.9], "borderColor": "#06b6d4", "backgroundColor": "#06b6d422", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "borderDash": [4, 4], "yAxisID": "y2"}]},
+        data:{labels:["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],datasets:[{"label": "Emigration 25-39 yrs", "data": [28099.0, 44807.0, 56125.0, 53896.0, 42324.0, 43669.0, 44477.0, 43130.0, 43014.0, 39664.0, 39844.0, 40201.0, 40841.0, 38816.0, 34972.0], "borderColor": "#f97316", "backgroundColor": "#f9731622", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Life expectancy at birth (right)", "data": [80.6, 80.8, 80.7, 81.4, 81.5, 81.1, 81.5, 81.4, 81.9, 81.7, 81.4, 80.2, 80.8, 81.8, 81.9], "borderColor": "#06b6d4", "backgroundColor": "#06b6d422", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "borderDash": [4, 4], "yAxisID": "y2"}]},
         options:{
             responsive:true,maintainAspectRatio:false,
             plugins:{
@@ -1088,14 +1145,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Persons",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Years",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1147,14 +1204,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"KGOE/\u20ac000",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1190,11 +1247,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Thousand t CO\u2082eq",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1230,14 +1287,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"\u20ac/kWh",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1289,11 +1346,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1329,11 +1386,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1369,14 +1426,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"per M inhabitants",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1390,14 +1447,15 @@ const _rp={id:'regimeBands',beforeDraw(chart){
     <span class="semoji">🏥</span>
     <h2>Health System</h2>
   </div>
-  <p class="narr"><span class="vbadge" style="background:#f59e0b;color:#1c1400">MIXED — recovery from austerity lows, gaps remain</span> The Greek health
-    system suffered severe capacity cuts during the 2010-2018 austerity decade. Since 2019, hospital
-    bed numbers and health personnel stabilised and partially recovered. ICU capacity was expanded
-    sharply post-COVID. Unmet medical needs due to cost — a direct austerity indicator — declined
-    from their crisis peak but remain elevated relative to EU peers. Out-of-pocket expenditure as a
-    share of total health spending remains high, reflecting weak public system coverage.
-    Preventable and treatable mortality rates show slow improvement but lag peer countries.
-    <strong>System is stabilising but structural capacity gaps and access barriers from the austerity decade persist.</strong></p>
+  <p class="narr"><span class="vbadge" style="background:#f59e0b;color:#1c1400">MIXED — ICU capacity improved, access barriers persisting</span> The Greek health
+    system suffered severe capacity cuts during the 2010–2018 austerity decade. Since 2019, public
+    hospital bed numbers stabilised and ICU capacity expanded significantly post-COVID (+16% 2019→2023).
+    Unmet medical needs due to cost declined from a crisis peak of 10.9% (2015) to 5.7% (2021), but
+    then rose sharply back to 9.4% (2023) — a reversal driven by the inflation shock eroding household
+    budgets. Out-of-pocket expenditure as a share of total health spending remains high, reflecting
+    weak public system coverage. Preventable mortality spiked during COVID but recovered to below 2019
+    levels by 2023. Treatable mortality improved steadily.
+    <strong>ICU expansion is genuine progress; the cost-driven access barrier reversed after 2021 — a direct inflation-era impact on health equity.</strong></p>
   <div class="grid"><div class="card">
         <p class="ct">Health System Capacity</p>
         <div class="cw"><canvas id="c28"></canvas></div>
@@ -1429,14 +1487,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Per 100,000 population",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Physicians per 100k",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1472,11 +1530,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1512,14 +1570,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"\u20ac per capita",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"% / Rate per 100k",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1572,11 +1630,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1612,11 +1670,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1652,14 +1710,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Number",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Thousands",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1713,11 +1771,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1753,11 +1811,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1793,14 +1851,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Thousands",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"% of GDP",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1835,11 +1893,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
             plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:9}}},
                      tooltip:{mode:'index',intersect:false}},
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"PPS EU27=100",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };
@@ -1856,11 +1914,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
             plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:9}}},
                      tooltip:{mode:'index',intersect:false}},
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };
@@ -1896,14 +1954,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Coefficient of variation (%)",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1917,19 +1975,18 @@ const _rp={id:'regimeBands',beforeDraw(chart){
     <span class="semoji">🧵</span>
     <h2>Social Fabric</h2>
   </div>
-  <p class="narr"><span class="vbadge" style="background:#f59e0b;color:#1c1400">MIXED — safety improved, wellbeing and inclusion lagging</span> Crime rates
-    declined across categories — a genuine safety improvement. Life satisfaction scores in Greece
-    are among the EU's lowest and have shown only modest improvement despite economic recovery,
-    suggesting a gap between macroeconomic performance and lived experience. The gender pay gap
-    remains wide. The disability employment gap is significant and shows limited improvement.
-    Childcare coverage for under-3s is very low compared to EU peers — a key barrier to female
-    labour force participation and a driver of low fertility. Civic and voluntary participation is
-    limited. Digital skills improved from a low base. The NEET rate (youth not in employment,
-    education or training) declined but remains one of the EU's highest.
-    <strong>Safety gains clear; social cohesion, inclusion and equal opportunity remain structural weaknesses.</strong></p>
+  <p class="narr"><span class="vbadge" style="background:#f59e0b;color:#1c1400">MIXED — opportunity improved, safety and inclusion mixed</span> The safety picture
+    is more complex than aggregate crime headlines suggest: robbery and drug offences declined since 2019,
+    but theft (2.8→10.1 per 100k), assault (1.1→1.8), and burglary (0.6→6.6) all increased substantially —
+    in part reflecting post-COVID catch-up and changed reporting patterns. Life satisfaction improved
+    modestly (5.7 in 2013 to 6.4 by 2025) but remains among EU's lower scores. The NEET rate fell from
+    17.7% (2019) to 14.2% (2024). Childcare for under-3s improved strongly from 14% to 20% — a positive
+    structural shift. However, the gender pay gap worsened (10.4%→13.4%) and the disability employment
+    gap deteriorated sharply (29%→35.9% by 2025), signalling widening inclusion failures.
+    <strong>Opportunity improved; safety is mixed; gender and disability inclusion deteriorated.</strong></p>
   <div class="grid"><div class="card">
         <p class="ct">Crime Rates (per 100,000 population)</p>
-        <div class="cw"><canvas id="c41"></canvas></div>
+        <div class="cw"><canvas id="c41"></canvas></div><p class="note">Theft, assault and burglary increased substantially since 2019; robbery declined</p>
         <script>(function(){
 const _rp={id:'regimeBands',beforeDraw(chart){
   const bands=chart.options.plugins?.regimeBands?.bands;
@@ -1949,7 +2006,7 @@ const _rp={id:'regimeBands',beforeDraw(chart){
 }};
         const cfg={
         type:"line",
-        data:{labels:["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"],datasets:[{"label": "Homicide", "data": [1.58, 1.65, 1.49, 1.28, 0.96, 0.79, 0.75, 0.72, 0.88, 0.71, 0.68, 0.83, 0.76, 0.73], "borderColor": "#ef4444", "backgroundColor": "#ef444422", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Theft", "data": [4.59, 3.91, 4.38, 4.25, 4.26, 5.1, 4.57, 4.21, 3.94, 2.83, 5.07, 9.05, 10.52, 10.05], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b22", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Assault", "data": [null, null, null, null, null, null, null, null, null, null, null, null, null, null], "borderColor": "#f97316", "backgroundColor": "#f9731622", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "borderDash": [4, 4]}]},
+        data:{labels:["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"],datasets:[{"label": "Homicide", "data": [1.58, 1.65, 1.49, 1.28, 0.96, 0.79, 0.75, 0.72, 0.88, 0.71, 0.68, 0.83, 0.76, 0.73], "borderColor": "#ef4444", "backgroundColor": "#ef444422", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Assault", "data": [1.74, 1.64, 1.67, 1.61, 1.42, 1.56, 1.22, 1.39, 1.15, 1.09, 1.2, 1.42, 1.6, 1.84], "borderColor": "#f97316", "backgroundColor": "#f9731622", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Theft (total)", "data": [4.59, 3.91, 4.38, 4.25, 4.26, 5.1, 4.57, 4.21, 3.94, 2.83, 5.07, 9.05, 10.52, 10.05], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b22", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Burglary", "data": [1.68, 1.61, 1.83, 1.7, 1.75, 2.39, 2.44, 2.08, 1.69, 0.65, 3.39, 6.16, 6.77, 6.57], "borderColor": "#a855f7", "backgroundColor": "#a855f722", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "borderDash": [4, 4]}, {"label": "Robbery", "data": [54.67, 59.66, 54.05, 44.7, 34.78, 39.75, 43.94, 39.66, 40.57, 40.42, 23.71, 22.5, 27.08, 26.7], "borderColor": "#06b6d4", "backgroundColor": "#06b6d422", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "borderDash": [4, 4]}]},
         options:{
             responsive:true,maintainAspectRatio:false,
             plugins:{
@@ -1958,11 +2015,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Per 100,000",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -1998,14 +2055,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Score (0-10)",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -2041,11 +2098,11 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"% / pp",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}}
+                   ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -2059,18 +2116,18 @@ const _rp={id:'regimeBands',beforeDraw(chart){
     <span class="semoji">⚖️</span>
     <h2>Governance & Institutions</h2>
   </div>
-  <p class="narr"><span class="vbadge" style="background:#f59e0b;color:#1c1400">PARTIAL IMPROVEMENT — slow institutional progress</span> Greece's
-    Corruption Perceptions Index (TI, embedded in Eurostat SDG framework) improved from ~44 in 2015
-    to ~49 in 2023 — meaningful but still below the EU median of ~65. Perceived judicial independence
-    is low and stagnant — a consistent drag on FDI, contract enforcement, and public trust. Civil court
-    pending cases per capita are high, reflecting chronic judicial backlog; court expenditure per capita
-    is modest. Bribery cases reported declined — partly reflecting genuine improvement and partly
-    reduced reporting. Civil servant headcount stabilised after deep austerity-era cuts; remuneration
-    partially recovered in real terms but remains low, affecting public administration quality.
-    <strong>Slow institutional improvement; corruption, judicial efficiency and public sector capacity remain structural weaknesses.</strong></p>
+  <p class="narr"><span class="vbadge" style="background:#ef4444;color:#1f0000">DETERIORATED — CPI flat, judicial trust collapsed</span> Greece's
+    Corruption Perceptions Index (TI, embedded in Eurostat SDG framework) moved from 48 in 2019 to
+    50 in 2025 — essentially flat, with significant year-to-year volatility. Perceived judicial
+    independence deteriorated sharply: those rating it as good or very good fell from 57% (2019) to
+    just 38% (2025), while those rating it bad or very bad rose from 34% to 60%. This is one of
+    the starkest negative trends in the dataset. Civil court cases pending per 100k increased from
+    2,877 to 3,173 between 2019 and 2022 — a worsening backlog. Civil servant headcount stabilised
+    after deep austerity cuts; remuneration partially recovered but remains depressed.
+    <strong>Judicial trust collapsed post-2021; corruption perception flat; court backlog growing — institutional deterioration is the key finding.</strong></p>
   <div class="grid"><div class="card">
-        <p class="ct">Corruption, Trust & Bribery</p>
-        <div class="cw"><canvas id="c44"></canvas></div>
+        <p class="ct">Corruption & Judicial Independence</p>
+        <div class="cw"><canvas id="c44"></canvas></div><p class="note">Judicial independence perception deteriorated sharply: good/very good fell from 57% (2019) to 38% (2025)</p>
         <script>(function(){
 const _rp={id:'regimeBands',beforeDraw(chart){
   const bands=chart.options.plugins?.regimeBands?.bands;
@@ -2090,7 +2147,7 @@ const _rp={id:'regimeBands',beforeDraw(chart){
 }};
         const cfg={
         type:"line",
-        data:{labels:["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],datasets:[{"label": "CPI score (0-100, right)", "data": [36.0, 40.0, 43.0, 46.0, 44.0, 48.0, 45.0, 48.0, 50.0, 49.0, 52.0, 49.0, 49.0, 50.0], "borderColor": "#3b82f6", "backgroundColor": "#3b82f622", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "yAxisID": "y2"}, {"label": "Judicial independence \u2014 good/very good (%)", "data": [null, null, null, null, 47.0, 52.0, 59.0, 57.0, 53.0, 55.0, 52.0, 46.0, 41.0, 38.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e22", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Bribery suspects per 100k", "data": [null, null, null, null, 5.17, 0.75, 0.58, 3.47, 6.79, 7.6, 5.03, 2.47, null, null], "borderColor": "#ef4444", "backgroundColor": "#ef444422", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "borderDash": [4, 4]}]},
+        data:{labels:["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],datasets:[{"label": "CPI score (0-100, right)", "data": [36.0, 40.0, 43.0, 46.0, 44.0, 48.0, 45.0, 48.0, 50.0, 49.0, 52.0, 49.0, 49.0, 50.0], "borderColor": "#3b82f6", "backgroundColor": "#3b82f622", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "yAxisID": "y2"}, {"label": "Judicial independence \u2014 good/very good (%)", "data": [null, null, null, null, 47.0, 52.0, 59.0, 57.0, 53.0, 55.0, 52.0, 46.0, 41.0, 38.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e22", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2}, {"label": "Judicial independence \u2014 bad/very bad (%)", "data": [null, null, null, null, 42.0, 36.0, 31.0, 34.0, 35.0, 37.0, 44.0, 50.0, 56.0, 60.0], "borderColor": "#ef4444", "backgroundColor": "#ef444422", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "borderDash": [4, 4]}, {"label": "Bribery suspects per 100k", "data": [null, null, null, null, 5.17, 0.75, 0.58, 3.47, 6.79, 7.6, 5.03, 2.47, null, null], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b22", "tension": 0.3, "fill": false, "pointRadius": 2, "borderWidth": 2, "borderDash": [4, 4]}]},
         options:{
             responsive:true,maintainAspectRatio:false,
             plugins:{
@@ -2099,14 +2156,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"%",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"CPI score",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -2142,14 +2199,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"EUR per capita",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Per 100,000",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -2185,14 +2242,14 @@ const _rp={id:'regimeBands',beforeDraw(chart){
                 regimeBands:{bands:[{"from": "2010", "to": "2018", "color": "rgba(100,116,139,0.0)"}, {"from": "2019", "to": "2019", "color": "rgba(100,116,139,0.18)"}, {"from": "2020", "to": "2021", "color": "rgba(239,68,68,0.08)"}, {"from": "2022", "to": "2023", "color": "rgba(245,158,11,0.08)"}, {"from": "2024", "to": "2099", "color": "rgba(34,197,94,0.07)"}]}
             },
             scales:{
-                x:{grid:{color:'rgba(255,255,255,0.04)'},
+                x:{grid:{color:'rgba(0,0,0,0.06)'},
                    ticks:{color:'#64748b',font:{size:8},maxRotation:45,autoSkip:true,maxTicksLimit:14}},
-                y:{grid:{color:'rgba(255,255,255,0.04)'},
+                y:{grid:{color:'rgba(0,0,0,0.06)'},
                    title:{display:true,text:"Thousands",color:'#64748b',font:{size:9}},
-                   ticks:{color:'#94a3b8',font:{size:9}}},y2:{type:'linear',position:'right',
+                   ticks:{color:'#64748b',font:{size:9}}},y2:{type:'linear',position:'right',
             grid:{drawOnChartArea:false},
             title:{display:true,text:"Index",color:'#64748b',font:{size:9}},
-            ticks:{color:'#94a3b8',font:{size:9}}}
+            ticks:{color:'#64748b',font:{size:9}}}
             }
         }
     };cfg.plugins=[_rp];
@@ -2216,10 +2273,10 @@ const _rp={id:'regimeBands',beforeDraw(chart){
         <span class="ss-n">3</span><span class="ss-l">Improved</span>
       </div>
       <div class="ss-item" style="color:#f59e0b">
-        <span class="ss-n">9</span><span class="ss-l">Mixed</span>
+        <span class="ss-n">8</span><span class="ss-l">Mixed</span>
       </div>
       <div class="ss-item" style="color:#ef4444">
-        <span class="ss-n">3</span><span class="ss-l">Deteriorated</span>
+        <span class="ss-n">4</span><span class="ss-l">Deteriorated</span>
       </div>
     </div>
     <table class="sc-table">
@@ -2293,12 +2350,12 @@ const _rp={id:'regimeBands',beforeDraw(chart){
           <td>🧵 Social Fabric</td>
           <td style="color:#f59e0b;font-weight:700;font-size:1.1rem;text-align:center">+/−</td>
           <td><span class="vbadge" style="background:#f59e0b22;color:#f59e0b">MIXED</span></td>
-          <td style="color:#94a3b8;font-size:.8rem">Safety improved, wellbeing and inclusion lag</td>
+          <td style="color:#94a3b8;font-size:.8rem">NEET↓ childcare↑ BUT theft↑↑ gender gap↑ disability gap↑</td>
         </tr><tr>
           <td>⚖️ Governance & Institutions</td>
-          <td style="color:#f59e0b;font-weight:700;font-size:1.1rem;text-align:center">+/−</td>
-          <td><span class="vbadge" style="background:#f59e0b22;color:#f59e0b">MIXED</span></td>
-          <td style="color:#94a3b8;font-size:.8rem">Slow CPI gain, judicial backlog persists</td>
+          <td style="color:#ef4444;font-weight:700;font-size:1.1rem;text-align:center">↓</td>
+          <td><span class="vbadge" style="background:#ef444422;color:#ef4444">DETERIORATED</span></td>
+          <td style="color:#94a3b8;font-size:.8rem">Judicial trust collapsed; CPI flat; court backlog growing</td>
         </tr></tbody>
     </table>
   </div>
@@ -2371,13 +2428,24 @@ const _rp={id:'regimeBands',beforeDraw(chart){
     <p class="final-p">
       Greece in 2025 is unambiguously more stable than in 2019: lower unemployment, fiscal surplus, cleaner
       banking system, higher renewable share, lower GHG emissions, declining crime. These are real
-      improvements and should not be dismissed. <strong>3 of 15 surfaces improved; 9 are mixed; 3 deteriorated.</strong>
+      improvements and should not be dismissed. <strong>3 of 15 surfaces improved; 8 are mixed; 4 deteriorated.</strong>
+    </p>
+    <p class="final-p" style="background:#f0f7ff;border-left:3px solid #1d4ed8;padding:.75rem 1rem;border-radius:6px;margin-bottom:.75rem">
+      <strong>How to characterise Greece as a whole:</strong> A post-crisis economy in managed stabilisation — 
+      fiscally disciplined, externally fragile, socially stressed, and institutionally weakening. 
+      It functions as a <em>tourism-and-transfers state</em>: domestic productive capacity is insufficient 
+      to sustain growth without recurring injections of external demand (tourists) and external capital (EU funds). 
+      The state apparatus improved its financial management while losing public trust. Society is better employed 
+      but worse housed and more unequal in key dimensions. The long-run trajectory — demographic collapse, 
+      brain drain, flat productivity, deteriorating institutions — points toward a slow structural decline 
+      if the current growth model is not actively replaced. Greece is not in crisis; it is in a prolonged 
+      <em>low-equilibrium trap</em> that looks stable from the outside but is quietly eroding from within.
     </p>
     <p class="final-p">
       However the structural growth model is identical to 2019: tourism-dominated, low-productivity,
       low-innovation, demographically challenged, externally vulnerable, regionally polarised, and
       institutionally weak. The improvements are largely cyclical (post-pandemic rebound), exogenous
-      (EU fund injection equivalent to ~16% of GDP), or sectoral (energy transition driven by economics
+      (EU fund injection equivalent to ~20% of GDP), or sectoral (energy transition driven by economics
       as much as policy). Where EU funds went — digital, green, innovation — the output indicators
       (patents, R&D intensity, productivity) show no corresponding uplift.
     </p>
